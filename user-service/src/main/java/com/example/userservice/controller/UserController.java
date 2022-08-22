@@ -33,14 +33,10 @@ public class UserController {
 
     @GetMapping("/health_check")
     public String status(){
-        return String.format("It's working in user service on Port = %s\n" +
-                        "Port(server.port) = %s\n" +
-                        "token secret = %s\n" +
-                        "token expiration time = %s\n" +
-                env.getProperty("local.server.port"),
-                env.getProperty("server.port"),
-                env.getProperty("token.secret"),
-                env.getProperty("token.expiration_time"));
+        return String.format("It's working in user service on Port = " + env.getProperty("local.server.port") + "\n" +
+                "Port(server.port) = " + env.getProperty("server.port") + "\n" +
+                "token secret = " + env.getProperty("token.secret") + "\n" +
+                "token expiration time = " + env.getProperty("token.expiration_time") + "\n");
     }
 
     @GetMapping("/welcome")
