@@ -7,5 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: file://C:/Users/kim/Desktop/spring_cloud/SpringCloud
-#          uri: file://C:/Users/DIR-N-108/Desktop/direa_kjy/SpringCloud
+          uri: file://C:/Users/kim/Desktop/spring_cloud/configServer
+#          uri: file://C:/Users/DIR-N-108/Desktop/direa_kjy/configServer
