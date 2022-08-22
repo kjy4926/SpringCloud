@@ -46,14 +46,13 @@ public class WebSecurity {
 
         http
             .csrf().disable()
-//            .authorizeRequests().antMatchers("/login", "/welcome", "/health_check").permitAll()
-//                        .anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/actuator/**").permitAll()
+                .and()
                 .authorizeRequests().antMatchers("/**")
                     .hasIpAddress("127.0.0.1")
                 .and()
                     .addFilter(getAuthenticationFilter())
                     .authenticationManager(authenticationManager)
-
                         .headers().frameOptions().disable();
         return http.build();
     }
