@@ -35,8 +35,12 @@ eureka:
 greeting:
   message: Welcome to the simple e-commerce.
 
+
 management:
   endpoints:
     web:
       exposure:
         include: refresh, health, beans, busrefresh
+logging:
+  level:
+    com.example.userservice.client: debug
