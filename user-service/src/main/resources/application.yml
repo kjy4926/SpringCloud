@@ -4,15 +4,20 @@ server:
 spring:
   application:
     name: user-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: admin
   h2:
     console:
       settings:
         web-allow-others: true
       path: /user-service/h2-console
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:~/test;AUTO_SERVER=true
-    username: sa
+#  datasource:
+#    driver-class-name: org.h2.Driver
+#    url: jdbc:h2:~/test;AUTO_SERVER=true
+#    username: sa
   jpa:
 #    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
@@ -30,13 +35,8 @@ eureka:
 greeting:
   message: Welcome to the simple e-commerce.
 
-
-#token:
-#  expiration_time: 86400000
 management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans
-
-#  secret: user_token
+        include: refresh, health, beans, busrefresh

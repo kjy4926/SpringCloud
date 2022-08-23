@@ -2,6 +2,7 @@ package com.example.apigatewayservice.filter;
 
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.env.Environment;
@@ -13,11 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.nio.charset.StandardCharsets;
+
 @Component
 @Slf4j
 public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<AuthorizationHeaderFilter.Config> {
     Environment env;
 
+    @Autowired
     public AuthorizationHeaderFilter(Environment env) {
         super(Config.class);
         this.env = env;
@@ -52,7 +56,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
 
         String subject = null;
         try {
-            subject = Jwts.parser().setSigningKey(env.getProperty("token.secret"))
+            subject = Jwts.parser().setSigningKey(env.getProperty("token.secret").getBytes(StandardCharsets.UTF_8))
                     .parseClaimsJws(jwt).getBody()
                     .getSubject();
         }catch (Exception e){
@@ -61,7 +65,6 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
         if(subject == null || subject.isEmpty()){
             returnValue = false;
         }
-
         return returnValue;
     }
 
