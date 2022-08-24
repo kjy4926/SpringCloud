@@ -1,0 +1,17 @@
+{
+    "name": "my-source-connect",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "connection.url": "jdbc:mariadb://localhost:3306/mydb",
+        "connection.user": "root",
+        "connection.password": "w3084926",
+        "mode": "incrementing",
+        "incrementing.column.name": "id",
+        "table.whitelist": "mydb.users",
+        "topic.prefix": "my_topic_",
+        "tasks.max": "1",
+        "name": "my-source-connect"
+    },
+    "tasks": [],
+    "type": "source"
+}

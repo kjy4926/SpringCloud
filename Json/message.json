@@ -1,0 +1,23 @@
+{
+    "schema":
+    {
+        "type":"struct",
+        "fields":[
+                {"type":"int32","optional":false,"field":"id"},
+                {"type":"string","optional":true,"field":"user_id"},
+                {"type":"string","optional":true,"field":"pwd"},
+                {"type":"string","optional":true,"field":"name"},
+                {"type":"int64","optional":true,"name":"org.apache.kafka.connect.data.Timestamp","version":1,"field":"created_at"}
+            ],
+        "optional":false,
+        "name":"users"
+    },
+    "payload":
+    {
+        "id":4,
+        "user_id":"user4",
+        "pwd":"test",
+        "name":"username4",
+        "created_at":1661349118000
+    }
+}

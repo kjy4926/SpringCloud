@@ -1,0 +1,14 @@
+{
+    "name": "my-sink-connect",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "connection.url": "jdbc:mariadb://localhost:3306/mydb",
+        "connection.user": "root",
+        "connection.password": "w3084926",
+        "auto.create": "true",
+        "auto.evolve": "true",
+        "delete.enabled": "false",
+        "tasks.max": "1",
+        "topics": "my_topic_users"
+    }
+}
